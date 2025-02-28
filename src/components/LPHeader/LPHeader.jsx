@@ -57,7 +57,7 @@ const LPHeader = () => {
                 </div>
                 <div className="col-3">
                     <div className="d-flex justify-content-center flex-row gap-3">
-                        <button className="btn" style={{ borderRadius: '50px', height: '43px', width: '150px', backgroundColor: '#D9D9D9', marginTop: '40px' }}>Register</button>
+                        <button className="btn" style={{ borderRadius: '50px', height: '43px', width: '150px', backgroundColor: '#D9D9D9', marginTop: '40px' }}  onClick={()=>window.location.href='/register'}>Register</button>
                         <button className="btn" style={{ borderRadius: '50px', height: '43px', width: '150px', backgroundColor: '#D9D9D9', marginTop: '40px' }} data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                         
                        

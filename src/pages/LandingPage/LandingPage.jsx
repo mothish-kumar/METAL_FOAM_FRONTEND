@@ -7,9 +7,19 @@ import { FaUserTie } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
 import ModuleOverviewSection from '../../components/ModuleOverviewSection/ModuleOverviewSection'
 import FeaturedMaterialSection from '../../components/FeaturedMaterialSection/FeaturedMaterialSection'
+import ContactSection from '../../components/ContactSection/ContactSection'
+import { useState } from 'react'
+import {login} from '../../api/authService'
 
 
 const LandingPage = () => {
+
+const [userName, setUserName] = useState('');
+const [password, setPassword] = useState('');
+
+const handleLogin =()=>{
+  login(userName,password)
+}
   return (
     <>
         <LPHeader/>
@@ -17,6 +27,7 @@ const LandingPage = () => {
         <AboutSection id='about'/>
         <ModuleOverviewSection id='module'/>
         <FeaturedMaterialSection id='featured'/>
+        <ContactSection id='contact'/>
 
         {/* LoginModal Script */}
         <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -28,16 +39,16 @@ const LandingPage = () => {
             </div>
             <div className="modal-body px-5 py-5">
               <div className="input-group mt-3">
-                <input type="text" className="form-control" placeholder="Type your username" />
+                <input type="text" className="form-control" placeholder="Type your username" value={userName} onChange={(e)=>setUserName(e.target.value)} required />
                 <span className="input-group-text"><FaUserTie /></span>
               </div>
               <div className="input-group mt-3">
-                <input type="text" className="form-control" placeholder="Type your password" />
+                <input type="password" className="form-control" placeholder="Type your password"  value={password} onChange={(e)=>setPassword(e.target.value)} required/>
                 <span className="input-group-text"><RiLockPasswordLine /></span>
               </div>
             </div>
             <div className="text-center pb-5">
-              <button type="button" className="btn btn-primary">Login</button>
+              <button type="button" className={style.loginBtn} onClick={handleLogin}>Login</button>
             </div>
           </div>
         </div>
