@@ -41,7 +41,6 @@ const AdminHomePage = () => {
       try{
         const response = await axiosInstance.get('/admin/logged-in-users')
       if(response.status === 200){
-        console.log(response.data)
         setLoggedInData(response.data)
       }else {
         toast.error('Failed to fetch data')

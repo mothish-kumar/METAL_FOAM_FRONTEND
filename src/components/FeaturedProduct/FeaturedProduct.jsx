@@ -3,13 +3,12 @@ import { MdVerified } from "react-icons/md";
 
 const FeaturedProduct = ({productName,materialType,materialSpecification,qualityString}) => {
   return (
-    <div className='container bg-light text-dark  p-2' style={{width:'371px',height:'256px',borderRadius:'30px'}}>
-        <div className='mt-1 text-center' style={{backgroundColor:'#FF4500',color:'white'}}>{productName}    <MdVerified /></div>
-        <hr style={{border:'2px solidrgba(0, 132, 255, 0.92)'}} />
-        <div>
-          <h5 style={{color:'#FF6600'}}>ProductDescription</h5>
-          <div className="table-responsive"  style={{ borderRadius: '35px'}}>
-        <table className="table table-bordered">
+    <div className='card' style={{maxWidth:'400px'}}>
+      <div className='card-header  d-flex  align-item-center' style={{backgroundColor:'#CD7903',color:'white'}}>{productName}<MdVerified size={'20px'}/> </div>
+      <div className='card-body'>
+        <div className='card-title text-success'>Product Description</div>
+        <div className='card-text'>
+        <table className="table " >
           <tbody>
             <tr>
               <th style={{color:'#232A58'}}>Material Type</th>
@@ -25,10 +24,9 @@ const FeaturedProduct = ({productName,materialType,materialSpecification,quality
             </tr>
           </tbody>
         </table>
-      </div>
-           
         </div>
-        
+      </div>
+
     </div>
   )
 }
