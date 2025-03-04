@@ -6,6 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { useState ,useEffect} from 'react';
 import axiosInstance from'../../api/axiosInstance'
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const RegistrationPage = () => {
     const [name, setName] = useState('')
@@ -14,6 +15,7 @@ const RegistrationPage = () => {
     const[registeredEmails,setRegisteredEmails] = useState([])
     const [emailExists, setEmailExists] = useState(false)
     const [emailValid, setEmailValid] = useState(true);
+    const navigate = useNavigate()
 
 
     // get the already registered email id 
@@ -52,6 +54,7 @@ const RegistrationPage = () => {
         const response = await axiosInstance.post('/auth/register',{name,email,role})
         if(response.status === 201){
             toast.success('Registered successfully! Wait for the admin to approve your account .Once approved login credintials will be sent to your email');
+            navigate('/')
         }
     }catch(error){
         toast.error('Error while registering');
@@ -61,7 +64,7 @@ const RegistrationPage = () => {
   return (
     <div className='container'>
         <div className='text-center'>
-            <img src={logoImg} alt="icon Image" className='img-fluid' width='287px' height='206px' />
+            <img src={logoImg} alt="icon Image" className='img-fluid mx-auto' width='287px' height='206px' />
         </div>
         <div className=' container bg-light  text-dark text-center p-5' style={{width:'565px',borderRadius:'50px',padding:'20px'}}>
             <h2>Create an Account</h2>

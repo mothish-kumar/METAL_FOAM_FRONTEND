@@ -1,5 +1,5 @@
 import { toast } from 'sonner';
-import { navigateToAdmin ,navigateToLogin} from '../utils/navigation';
+import { navigateToAdmin ,navigateToLogin, navigateToRA} from '../utils/navigation';
 import axiosInstance from './axiosInstance';
 
 export const login = async(username,password)=>{
@@ -13,6 +13,9 @@ export const login = async(username,password)=>{
             localStorage.setItem('authToken', response.data.accesstoken);
             if(response.data.role === 'admin'){
                 navigateToAdmin();
+            }
+            if(response.data.role === 'resource_analyst'){
+                navigateToRA();
             }
         }
     } catch (error) {

@@ -98,7 +98,7 @@ const accessPieChartData = {
   return (
     <>
     <Header menuList={menuList} menuContainerWidth='921px' role='Admin' defaultActiveMenu='/adminHome'/>
-    <div style={{marginTop:'170px'}}>
+    <div  style={{marginTop:'170px', maxHeight: "700px",maxWidth:'1500px', overflowY: "auto", paddingRight: "10px" ,marginLeft:'220px' }}>
             <div className='container' >
               <div className='row' >
               <div className=" col-4">

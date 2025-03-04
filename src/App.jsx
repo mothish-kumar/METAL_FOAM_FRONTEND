@@ -11,12 +11,18 @@ function App() {
   const backgroundColors = {
     "/": "#232A58",
     "/register": "#232A58",
+    "/change-password":"#232A58",
     "/adminHome": "#6286AA",
     "/adminProduct": "#6286AA",
     "/adminUserManagement": "#6286AA",
     "/adminReports": "#6286AA",
     "/adminRejectedProducts": "#6286AA",
     "/adminDataAccess": "#6286AA",
+    '/raHome':'#CD7903',
+     '/raProduct':'#CD7903',
+      '/raAnalysis':'#CD7903',
+       '/raAnalysisReport':'#CD7903',
+        '/raDataAccess':'#CD7903'
   };
 
   useEffect(() => {

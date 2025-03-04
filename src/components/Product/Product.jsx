@@ -5,6 +5,7 @@ import { GrUpdate } from "react-icons/gr";
 import { FaRegTrashCan } from "react-icons/fa6";
 import axiosInstance from "../../api/axiosInstance";
 import { toast } from 'sonner';
+import { MdOutlineAccessTime } from "react-icons/md";
 
 const fetchImg = async (query) => {
   try {
@@ -99,16 +100,17 @@ const Product = ({initialData,onDelete}) => {
   }
 
   return (
-    <div className="card p-1" style={{maxWidth:'300px'}}>
+    <div className="card  p-1" style={{maxWidth:'300px',boxShadow: '0px 2px 10px', borderRadius:'10px',backgroundColor:'white'}}>
+      <div className="mt-1  d-flex " style={{marginLeft:'150px', fontSize:'10px',color:'gray'}}>{new Date(data.timestamp *1000).toLocaleString()} <div><MdOutlineAccessTime /></div></div>
         <img src={imgUrl || "https://via.placeholder.com/280"} alt="Product Image" className="card-img-top p-3" style={{ width: "100%", height: "200px", objectFit: "cover",borderRadius: "10px" }}
  />
       <div className="card-body">
-        <div className="pb-2">Product Name: {data.productName}</div>
-        <div className="pb-2">Product ID: {data.productId}</div>
+        <div className="pb-2" style={{color:'#2C3E50'}}>Product Name: <span style={{color:'#0073E6' ,fontSize:'20px'}}>{data.productName}</span></div>
+        <div className="pb-2" style={{color:'#2C3E50'}}>Product ID:  <span style={{color:'#16A34A'}}>{data.productId}</span></div>
         <div className="d-flex flex-row align-items-center">
 
-          <div style={{ color: "#ff3f04", cursor: "pointer" }} onClick={() => setShowModal(true)}>
-            More info...
+          <div style={{ color: "#e74c3c", cursor: "pointer" }} onClick={() => setShowModal(true)}>
+            <u>More info...</u>
           </div>
           <div style={{ marginLeft: "74px", cursor: "pointer" }} onClick={toggleFeature}>
           {isFeatured ? <PiStarFill size={"25px"} color="gold" /> : <PiStar size={"25px"}  />}
@@ -120,6 +122,7 @@ const Product = ({initialData,onDelete}) => {
             <FaRegTrashCan size={"20px"} style={{color:'red'}} />
           </div>
         </div>
+        
       </div>
 
       {/*View  Modal */}

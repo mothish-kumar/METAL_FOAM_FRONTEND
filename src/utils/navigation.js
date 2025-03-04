@@ -4,4 +4,6 @@ export const navigateToLogin = () => {
 export const navigateToAdmin = () => {
   window.location.href="/adminHome"; 
 }
-  
+export const navigateToRA = ()=>{
+  window.location.href = '/raHome'
+}

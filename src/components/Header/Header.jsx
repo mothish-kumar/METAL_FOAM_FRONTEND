@@ -57,7 +57,7 @@ const Header = ({menuList,defaultActiveMenu,role, menuContainerWidth,}) => {
                         />
                         {showDropdown && (
                             <div className="dropdown-menu show position-absolute" style={{ right: 0 ,top:'120px'}}>
-                                <button className="dropdown-item" onClick={() => navigate('/changePassword')}>Change Password</button>
+                                <button className="dropdown-item" onClick={() => navigate('/change-password')}>Change Password</button>
                             </div>
                         )}
                 </div>

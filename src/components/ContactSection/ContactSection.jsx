@@ -4,6 +4,7 @@ import { IoIosSend } from "react-icons/io";
 import contactImg from '../../assets/contactImg.png'
 import axionInstance from '../../api/axiosInstance';
 import { toast } from 'sonner';
+import { useLoader } from '../../context/LoaderContext';
 
 
 const ContactSection = ({id}) => {
@@ -11,12 +12,14 @@ const ContactSection = ({id}) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')  
     const [message, setMessage] = useState('')
+    const {setLoading} = useLoader()
 
     const handleSend =()=>{
         if(!name || !email || !message){
             toast.error('Required fields are missing')
             return
         }
+        setLoading(true)
         try{
             axionInstance.post('auth/sendMail',{name,email,message})
             toast.success('Message sent successfully')
@@ -25,6 +28,8 @@ const ContactSection = ({id}) => {
             setMessage('')
         }catch{
             toast.error('Error while sending message')
+        }finally{
+            setLoading(false)
         }
     }
 
@@ -39,8 +44,13 @@ const ContactSection = ({id}) => {
                 <input type="email" className='form-control' value={email} onChange={(e)=>setEmail(e.target.value)} />
                 <label className='form-label mt-2'>Message</label>
                 <textarea className='form-control' rows='4' value={message} onChange={(e)=>setMessage(e.target.value)}></textarea>
-                <div className='text-center'>
-                <button className='btn text-dark btn-warning mt-3 ' onClick={handleSend}><IoIosSend />send</button>
+                <div style={{marginLeft:'250px'}}>
+                <button className="btn  text-dark btn-warning mt-3 d-flex align-items-center gap-2" onClick={handleSend}>
+                    <IoIosSend />
+                    send
+                    </button>
+
+
                 </div>
             </div>
             <div className='col-6'>

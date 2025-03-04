@@ -23,11 +23,14 @@ const handleLogin =()=>{
   return (
     <>
         <LPHeader/>
+        <div style={{ maxHeight: "1000px",maxWidth:'2000px', overflowY: "auto", paddingRight: "10px" ,marginLeft:'100px' ,marginTop:'150px'}}>
         <HeroSection id='hero'/>
         <AboutSection id='about'/>
         <ModuleOverviewSection id='module'/>
         <FeaturedMaterialSection id='featured'/>
         <ContactSection id='contact'/>
+        </div>
+        
 
         {/* LoginModal Script */}
         <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
