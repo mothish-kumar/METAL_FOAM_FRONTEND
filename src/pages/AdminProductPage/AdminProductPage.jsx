@@ -19,7 +19,7 @@ const AdminProductPage = () => {
       ]
 
       const [products,setProducts] = useState([])
-      const [addModal,setAddModal] = useState(false)
+      const [addModal,setAddModal] = useState(false) 
       const [addData,setAddData]= useState({})
       const [pagination, setPagination] = useState({
         currentPage: 1,
