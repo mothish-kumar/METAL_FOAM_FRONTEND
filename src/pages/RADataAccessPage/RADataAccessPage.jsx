@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header'
 import axiosInstance from '../../api/axiosInstance'
 import {toast} from 'sonner'
 import DataTable from '../../components/DataTable/DataTable'
+import { useLoader } from '../../context/LoaderContext'
 
 const RADataAccessPage = () => {
     const menuList = [
@@ -12,6 +13,7 @@ const RADataAccessPage = () => {
         {name:'Analysis Report',path:'/raAnalysisReport'},
         {name:'Data Access',path:'/raDataAccess'}
     ]
+       const {setLoading} = useLoader()
     const columns = [
       { accessorKey: "employeeId", header: "Employee ID" },
       { accessorKey: "role", header: "Role" },
@@ -87,12 +89,15 @@ const RADataAccessPage = () => {
                             toast.error("Invalid duration. Enter a valid number.");
                             return;
                           }
+                          setLoading(true)
                           try{
                             await axiosInstance.post(`/resource-analyst/approve-access-request/${employeeId}`, { duration: Number(duration) })
                             toast.success(`${employeeId} has been approved successfully`)
                             fetchData()
                             }catch(error){
                               toast.error('Failed to approve access')
+                            }finally{
+                              setLoading(false) 
                             }}}>Click</button>
                              </div>
             </div>
@@ -104,12 +109,15 @@ const RADataAccessPage = () => {
     }
 
     const handleDeny = async(employeeId)=>{
+      setLoading(true)
       try{
         await axiosInstance.post(`/resource-analyst/deny-access-request/${employeeId}`)
         toast.success(`${employeeId} has been denied access successfully`)
         fetchData()
       }catch(error){
         toast.error('Failed to deny accss')
+      }finally{
+        setLoading(false) 
       }
     }
     useEffect(()=>{

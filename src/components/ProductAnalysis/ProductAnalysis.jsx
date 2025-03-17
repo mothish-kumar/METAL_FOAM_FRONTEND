@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import axios from "axios";
-import { PiStar,PiStarFill } from "react-icons/pi";
 import { GrUpdate } from "react-icons/gr";
 import { FaRegTrashCan } from "react-icons/fa6";
 import axiosInstance from "../../api/axiosInstance";
@@ -116,7 +115,7 @@ const ProductAnalysis = ({initialData,onDelete}) => {
             }
         }
     })
-  }
+  } 
   return (
     <div className="card  p-1" style={{maxWidth:'300px',boxShadow: '0px 2px 10px', borderRadius:'10px',backgroundColor:'white'}}>
       <div className="mt-1  d-flex " style={{marginLeft:'150px', fontSize:'10px',color:'gray'}}>{new Date(data.timestamp *1000).toLocaleString()} <div><MdOutlineAccessTime /></div></div>

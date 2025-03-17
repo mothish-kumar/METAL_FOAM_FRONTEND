@@ -7,3 +7,12 @@ export const navigateToAdmin = () => {
 export const navigateToRA = ()=>{
   window.location.href = '/raHome'
 }
+export const navigateToDS = ()=>{
+  window.location.href='/dsHome'
+}
+export const navigateToPR = ()=>{
+  window.location.href='/prHome'
+}
+export const navigateToQC = ()=>{
+  window.location.href = '/qcHome'
+}

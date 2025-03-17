@@ -22,7 +22,21 @@ function App() {
      '/raProduct':'#CD7903',
       '/raAnalysis':'#CD7903',
        '/raAnalysisReport':'#CD7903',
-        '/raDataAccess':'#CD7903'
+        '/raDataAccess':'#CD7903',
+        '/dsHome':'#09B478',
+        '/dsProduct':'#09B478',
+        '/dsAnalysis':'#09B478',
+        '/dsAnalysisReport':'#09B478',
+        '/dsDataAccess':'#09B478',
+        '/prHome':'#6B6C6C',
+        "/prProduction" :'#6B6C6C',
+        "/prProgress":'#6B6C6C',
+        "/prQualityCheck":'#6B6C6C',
+        "/prReport":'#6B6C6C',
+        "/qcHome":"#02542D",
+        "/qcQualityCheck":"#02542D",
+        "/qcProgress":"#02542D",
+        "/qcReport":"#02542D"
   };
 
   useEffect(() => {

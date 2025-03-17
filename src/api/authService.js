@@ -1,5 +1,5 @@
 import { toast } from 'sonner';
-import { navigateToAdmin ,navigateToLogin, navigateToRA} from '../utils/navigation';
+import { navigateToAdmin ,navigateToLogin, navigateToRA,navigateToDS, navigateToPR,navigateToQC} from '../utils/navigation';
 import axiosInstance from './axiosInstance';
 
 export const login = async(username,password)=>{
@@ -15,7 +15,16 @@ export const login = async(username,password)=>{
                 navigateToAdmin();
             }
             if(response.data.role === 'resource_analyst'){
-                navigateToRA();
+                navigateToRA(); 
+            }
+            if(response.data.role === 'design_support'){
+                navigateToDS();
+            }
+            if(response.data.role === 'production_assembly'){
+                navigateToPR();
+            }
+            if(response.data.role === 'quality_control'){
+                navigateToQC();
             }
         }
     } catch (error) {

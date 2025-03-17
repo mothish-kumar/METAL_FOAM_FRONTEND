@@ -26,6 +26,7 @@ const RAAnalysisReportPage = () => {
     const handleSingleProductDelete = async(productId)=>{
       setProducts(prevProducts =>prevProducts.filter(product=>product.productId != productId))
     }
+
     useEffect(()=>{
       fetchProductData()
     },[])

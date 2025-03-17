@@ -44,9 +44,13 @@ const fetchData = async(page = 1, limit = 10)=>{
     if(error.response){
       if(error.response.status === 404){
         setHaveAccess(false)
-      }
-    }
-    toast.error('Failed to fetch data')
+      }if(error.response.status = 403){
+                          setHaveAccess(false)
+                          toast.error('You don\'t permission to access Product data .Please contact admin')
+                      }               
+    }else{
+                    toast.error('Failed to fetch products data')
+                }
   }
 } 
 // Handle page change
