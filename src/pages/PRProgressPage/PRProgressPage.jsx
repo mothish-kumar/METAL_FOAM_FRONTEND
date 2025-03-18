@@ -47,7 +47,7 @@ const PRProgressPage = () => {
           getValue() ? new Date(getValue()).toLocaleString() : "N/A",
       },
       { header: "Production Report", accessorKey: "productionReport.recommendations" },
-    ],
+    ], 
     Completed: [
       { header: "Production ID", accessorKey: "productionId" },
       { header: "Production Name", accessorKey: "productionName" },

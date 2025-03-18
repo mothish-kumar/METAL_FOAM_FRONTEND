@@ -20,6 +20,10 @@ const QCQualityCheckPage = () => {
         corrosionImpact: '',
         weightRetention: ''
     });
+    const[showReworkInputModal,setShowReworkInputModal] = useState(false)
+    const[rejectionReason,setRejectionReason] = useState("")
+    const [improvementSuggestions,setImprovementSuggestions] = useState("")
+    const [reworkIssue,setReworkIssue] = useState("")
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -36,6 +40,19 @@ const QCQualityCheckPage = () => {
           }catch(error){
             toast.error('Failed to fetch options')
           }
+    }
+    const reworkBtn = async()=>{
+        if(!selectedOption) return toast.error('Please select the product first')
+        if(!rejectionReason || !improvementSuggestions || !reworkIssue) return toast.error('Please fill the required fields')
+        try{
+            await axiosInstance.post( `/quality/submit-report/${selectedOption}`,{
+                rejectionReason,reworkIssue,improvementSuggestions,qualityStatus:"Rework"
+            })
+            toast.success('Production has been sent to rework successfully')
+            window.location.reload()
+       }catch(error){
+        toast.error('Failed to send rework message')
+       }
     }
     const approveBtn = async()=>{
         if(!selectedOption) return toast.error('Please select the product first')
@@ -99,10 +116,30 @@ const QCQualityCheckPage = () => {
                     </div>
                     <div className='d-flex justify-content-evenly'>
                         <button className='btn btn-success px-4' onClick={approveBtn}>Approve</button>
-                        <button className='btn btn-danger px-4'>Rework</button>
+                        <button className='btn btn-danger px-4' onClick={()=>setShowReworkInputModal(true)}>Rework</button>
                     </div>
                 </div>
        </div>
+       {showReworkInputModal &&(
+                <div className="modal fade show d-block" tabIndex="-1" style={{ background: "rgba(0,0,0,0.5)" }}>
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title">Rework message</h5>
+                      <button className="btn-close" onClick={() => setShowReworkInputModal(false)}></button>
+                    </div>
+                    <div className="modal-body">
+                          <textarea className='form-control mb-2' placeholder='Rework Issue' value={reworkIssue} onChange={(e)=>setReworkIssue(e.target.value)}></textarea>
+                          <textarea className='form-control mb-2' placeholder='Improvement Sugesstion' value={improvementSuggestions} onChange={(e)=>setImprovementSuggestions(e.target.value)}></textarea>
+                          <textarea className='form-control mb-2' placeholder='Rejection Reason' value={rejectionReason} onChange={(e)=>setRejectionReason(e.target.value)}></textarea>
+                          <div className='text-center'>
+                            <button className='btn btn-warning px-4' onClick={reworkBtn}>Confirm</button>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              )}
     </div>  )
 }
 

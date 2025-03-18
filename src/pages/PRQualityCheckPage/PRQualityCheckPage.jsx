@@ -18,6 +18,7 @@ const PRQualityCheckPage = () => {
         const[weldingStrength,setWeldingStrength] = useState(0)
         const [weldingQuality,setWeldingQuality] = useState("")
         const [recommendations,setRecommendations] = useState("" )
+
         const fetchOptions = async()=>{
       try{
         const response = await axiosInstance.get('/production/getProduction?productionStatus=In_Progress') 
@@ -85,6 +86,7 @@ const PRQualityCheckPage = () => {
                   </div>
               </div>
               </div>
+              
 
     </div>
   )
